@@ -3,8 +3,14 @@
 #
 
 # Pull base images.
-FROM phinexdaz/centos
+FROM centos:7
 MAINTAINER phinexdaz <https://github.com/phinexdaz>
+
+# Install env
+RUN yum -y install wget gcc git make unzip vixie-cron && yum clean all
+
+# Set timezone
+RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
 
 # Download and install package
 RUN cd /tmp && \
